@@ -1,6 +1,6 @@
 {
   "name": "nitropack",
-  "version": "1.0.0",
+  "version": "1.0.0-test",
   "description": "Build and Deploy Universal JavaScript Servers",
   "repository": "unjs/nitro",
   "license": "MIT",
@@ -23,8 +23,8 @@
   ],
   "scripts": {
     "build": "unbuild",
-    "dev": "pnpm nitro dev playground",
-    "dev:build": "pnpm nitro build playground",
+    "dev": "yarn nitro dev playground",
+    "dev:build": "yarn nitro build playground",
     "dev:start": "node playground/.output/server/index.mjs",
     "docs:build": "vitepress build docs",
     "docs:dev": "vitepress dev docs",
@@ -32,12 +32,12 @@
     "lint": "eslint --ext .ts,.mjs,.cjs . && prettier -c src",
     "lint:fix": "eslint --fix --ext .ts,.mjs,.cjs . && prettier --write -c src",
     "nitro": "jiti ./src/cli.ts",
-    "prepack": "pnpm build",
-    "release": "pnpm test && pnpm build && changelogen --release && pnpm publish && git push --follow-tags",
+    "prepack": "yarn build",
+    "release": "yarn test && yarn build && changelogen --release && yarn publish && git push --follow-tags",
     "stub": "unbuild --stub",
-    "test": "pnpm lint && vitest run --silent",
-    "test:types": "tsc --noEmit && pnpm test:fixture:types",
-    "test:fixture:types": "pnpm stub && jiti ./test/scripts/gen-fixture-types.ts && cd test/fixture && tsc --noEmit"
+    "test": "yarn lint && vitest run --silent",
+    "test:types": "tsc --noEmit && yarn test:fixture:types",
+    "test:fixture:types": "yarn stub && jiti ./test/scripts/gen-fixture-types.ts && cd test/fixture && tsc --noEmit"
   },
   "resolutions": {
     "nitropack": "link:."
@@ -124,11 +124,11 @@
     "unbuild": "^1.1.1",
     "vitest": "^0.27.2"
   },
-  "packageManager": "pnpm@7.25.0",
+  "packageManager": "yarn@3.3.1",
   "engines": {
     "node": "^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   },
-  "pnpm": {
+  "yarn": {
     "peerDependencyRules": {
       "ignoreMissing": [
         "react",
