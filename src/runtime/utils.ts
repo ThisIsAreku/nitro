@@ -47,14 +47,12 @@ export function isJsonRequest(event: H3Event) {
 }
 
 export function normalizeError(error: any) {
-  const cwd = process.cwd();
   const stack = ((error.stack as string) || "")
     .split("\n")
     .splice(1)
     .filter((line) => line.includes("at "))
     .map((line) => {
       const text = line
-        .replace(cwd + "/", "./")
         .replace("webpack:/", "")
         .replace("file://", "")
         .trim();
